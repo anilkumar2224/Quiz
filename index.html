@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+    <link rel="icon" type="image/x-icon" href="favicon (2).ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="firework.css" type="text/css">
+   
+</head>
+<body class="bg svg" id="bg">
+   <div class="inst hide" id="insta">
+       <h2>Instructions</h2>
+       <ol>
+           <li><span style="color: crimson;font-size: 20px;">1</span> QUIZ contains 5 objective  question.</li>
+           <li><span style="color: crimson;font-size: 20px;">2</span> The question will update on clicking either any option or SKIP button</li>
+           <li><span style="color: crimson;font-size: 20px;">3</span> No negative marks, 1 mark for each correct answer, no marks for skipped question</li>
+           <li><span style="color: crimson;font-size: 20px;">4</span> Each question will appear only 30s on screen</li>
+       </ol>
+   </div>
+    <div class="background" id="bk">
+    <div class="bg1"></div>
+<div class="bg1 bg2"></div>
+<div class="bg1 bg3"></div>
+<div class="content">
+  <h1>QUIZ</h1>
+ </div>
+</div>
+    <div class="stt4">
+    <div id="timer" class="time hide ">
+        0  
+       </div>
+    </div>
+    <div id="select" class="sa">
+        <h2 style="font-family:monospace; font-size: 20px;">Select your topic</h2>
+        <div class="stt1">
+        <i id="dbtn" class="fa fa-caret-down dbtnc" aria-hidden="true"></i>
+        <i id="dbtn1" class="fa fa-caret-up dbtnc hide" aria-hidden="true"></i>
+        </div>
+        <div id="down" class="hide">
+            <a id="science" href="#"><i id="science" class="fa fa-atom" style="color:#6bbef5 ;font-size: 25px;"><span style="margin-left: 30px;color:#101213 ;font-family:monospace;">Science</span></i></a>
+            <a id="coding" href="#"><i class="fa fa-code"style="color:#6bbef5 ;font-size: 25px;" ><span style="margin-left: 20px;color:#101213 ;font-family:monospace;">Coding</span></i></a>
+            <a id="maths" href="#"><i class="fa fa-calculator" style="color:#6bbef5 ;font-size: 25px;"><span style="margin-left: 30px;color:#101213 ;font-family:monospace;">Aptitude</span></i></a>
+            <a id="english" href="#"><i class="fa fa-language" style="color:#6bbef5 ;font-size: 25px;"><span style="margin-left: 20px;color:#101213 ;font-family:monospace;">English</span></i></a>
+
+        </div>
+        
+   </div>
+               <div class="buttons stt" id="startb">
+                <div class="container">
+                    <button id="start" onclick="start1()" class="hide btn effect01">Start</button>
+                </div>
+              </div>
+  
+    <div id="q" class="hide card">
+        <div id="number">
+
+        </div>
+   <div id="question">
+    
+   </div>
+   <div>
+   
+       <li><button name="1" value="A" id="opt1"></button></li>
+       <li><button name="1" value="B" id="opt2"></button></li>
+       <li><button name="1" value="C" id="opt3"></button></li>
+       <li><button name="1" value="D" id="opt4"></button></li>
+   
+</div>
+
+
+   <div id="next1" >
+  
+      <button id="next" ></button>
+   
+  </div>
+  
+</div>
+<div class="b">
+        <div class="buttons stt2">
+            <div class="container">
+        <button id="back"  class="back hide btn effect01">Back</button>
+         </div>
+        </div>
+</div>
+<div class="business-card hide" id="scorecard">
+    <div class="flipper">
+          <div class="front">
+              <div class="name">
+                <span id="score" class="first"> 
+    
+                </span> 
+                
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="firework hide" id="fw" >
+    <div class="pyro">
+        <div class="before"></div>
+        <div class="after"></div>
+      </div>
+</div>
+
+    <script src="tutorial.js"></script>
+</body>
+</html>
