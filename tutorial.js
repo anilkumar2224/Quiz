@@ -1,6 +1,6 @@
 var science=[
     {
-        question:"An astonaut in outer space will observe sky as",
+        question:"An astronaut in outer space will observe sky as",
         options:['White','Black','Blue','Red'],
         answer:'B',
         size:0
@@ -85,7 +85,7 @@ var coding=[
         size:1
     },
     {
-        question:"What is the infix version of the follwing postfix expression... ?  12 + z 17 y + 42 * / + ",
+        question:"What is the infix version of the following postfix expression... ?  12 + z 17 y + 42 * / + ",
         options:['x+12+z/17+y*42','x+12+z/((17+y)*42)','(x+12+z)/(17+y*42)','None'],
         answer:'B',
         size:1
