@@ -171,7 +171,8 @@ var timer=document.getElementById('timer');
 var firework=document.getElementById('fw');
 var bg=document.getElementById('bg');
 var insta=document.getElementById('insta');
-
+var b=document.getElementById('b');
+var butt=document.getElementById('butt');
 
 s.addEventListener('click',()=>{
     selectType=science;
@@ -180,6 +181,8 @@ s.addEventListener('click',()=>{
     first.classList.add('hide');
     bk.classList.add('hide');
     bk.classList.add('svg');
+    back.classList.remove('hide');
+    back.classList.add('stt5');
 });
 m.addEventListener('click',()=>{
     selectType=maths;
@@ -188,6 +191,8 @@ m.addEventListener('click',()=>{
     first.classList.add('hide');
     bk.classList.add('hide');
     bg.classList.add('svg');
+    back.classList.remove('hide');
+    back.classList.add('stt5');
 });
 c.addEventListener('click',()=>{
     selectType=coding;
@@ -196,6 +201,8 @@ c.addEventListener('click',()=>{
     first.classList.add('hide');
     bk.classList.add('hide');
     bg.classList.add('svg');
+    back.classList.remove('hide');
+    back.classList.add('stt5');
 });
 e.addEventListener('click',()=>{
     selectType=english;
@@ -204,6 +211,8 @@ e.addEventListener('click',()=>{
     first.classList.add('hide');
     bk.classList.add('hide');
     bg.classList.add('svg');
+    back.classList.remove('hide');
+    back.classList.add('stt5');
 });
 
 back.addEventListener('click',()=>{
@@ -223,6 +232,7 @@ back.addEventListener('click',()=>{
     firework.classList.add('hide');
     startb.classList.add('stt');
     bk.classList.remove('hide');
+    butt.classList.add('hide');
 });
 
 btn.addEventListener('click',()=>{
@@ -249,6 +259,7 @@ window.onclick = function(event) {
 
  var timer=document.getElementById('timer');
 start.addEventListener('click',()=>{
+    back.classList.remove('stt5');
   back.classList.add('hide');
   bg.classList.remove('svg');
   userAnswers=[];
@@ -263,7 +274,9 @@ start.addEventListener('click',()=>{
     sdis.classList.add('hide');
     scorecard.classList.add('hide');
     window.clearTimeout(id);
+    butt.classList.add('hide');
     loadQuestion(currentquestion);
+
 });
 var option;
 function loadQuestion(qindex){
@@ -312,19 +325,130 @@ function loadQuestion(qindex){
         start.classList.remove('hide');
         startb.classList.add('stt3');
         scorecard.classList.remove('hide'); 
+        butt.classList.remove('hide');
+        next.innerText='SKIP';
         if(score>=4){  
         firework.classList.remove('hide');
         }
         bg.classList.add('firework');
+        currentquestion++;
+        butt.addEventListener('click',()=>{
+            back.classList.add('hide');
+            bg.classList.remove('svg');
+            bg.classList.remove('firework');
+            firework.classList.add('hide');
+            index=0;
+            startb.classList.remove('stt');
+            insta.classList.add('hide');
+            start.classList.add('hide');
+            card.classList.remove('hide');
+            sdis.classList.add('hide');
+            scorecard.classList.add('hide');
+            window.clearTimeout(id);
+            butt.classList.add('hide');
+             next.innerText='NEXT';
+           index=0;
+           showAnswer(); 
+
+        });
         return;
     }
 };
+var index=0;
+function showAnswer(){
+    if(index<selectType.length){
+        timer.classList.add('hide');
+     window.clearTimeout(id); 
+     
+    var q=selectType[index];
+    if(q.size==1){
+        card.style.height='450px';
+    }
+    else if(q.size==2){
+        opt1.style.height='45px';
+        opt2.style.height='45px';
+        opt3.style.height='45px';
+        opt4.style.height='45px';
+        card.style.height='450px';
+    }
+    else{
+        card.style.height='400px'; 
+        opt1.style.height='35px';
+        opt2.style.height='35px';
+        opt3.style.height='35px';
+        opt4.style.height='35px';
+    }
+    number.innerText=index+1+'.';
+    question.textContent=q.question;
+    opt1.textContent=q.options[0];
+    opt2.textContent=q.options[1];
+    opt3.textContent=q.options[2];
+    opt4.textContent=q.options[3];
+
+    if(q.answer=='A'){
+        opt1.style.background="green";
+        if(userAnswers[index]!='A'){
+            
+            if(userAnswers[index]=='B'){
+                opt2.style.background="red";  
+            }else if(userAnswers[index]=='C'){
+                opt3.style.background="red";
+            }
+            else if(userAnswers[index]=='D'){
+                opt4.style.background="red";
+            }
+        }
+    }
+    else if(q.answer=='B'){
+        opt2.style.background="green";
+        if(userAnswers[index]!='B'){
+            if(userAnswers[index]=='A'){
+                opt1.style.background="red";  
+            }else if(userAnswers[index]=='C'){
+                opt3.style.background="red";
+            }
+            else if(userAnswers[index]=='D'){
+                opt4.style.background="red";
+            }
+        }
+    }
+    else if(q.answer=='C'){
+        opt3.style.background="green";
+        if(userAnswers[index]!='C'){
+            if(userAnswers[index]=='A'){
+                opt1.style.background="red";  
+            }else if(userAnswers[index]=='B'){
+                opt2.style.background="red";
+            }
+            else if(userAnswers[index]=='D'){
+                opt4.style.background="red";
+            }
+        }
+    }
+    else if(q.answer=='D'){
+        opt4.style.background="green";
+        if(userAnswers[index]!='D'){
+            if(userAnswers[index]=='B'){
+                opt2.style.background="red";  
+            }else if(userAnswers[index]=='C'){
+                opt3.style.background="red";
+            }
+            else if(userAnswers[index]=='A'){
+                opt1.style.background="red";
+            }
+        }
+    }
+
+   
+   }
+}
 
 
 option=document.querySelectorAll('li button');
     
     
         option[0].addEventListener('click',()=>{
+            if(currentquestion<=5 ){
             if(option[0].value==selectType[currentquestion].answer){
                 ++score;
             }
@@ -334,7 +458,7 @@ option=document.querySelectorAll('li button');
                 currentquestion++;
                 loadQuestion(currentquestion);  
           
-             
+        }
             
                      
                      
@@ -342,6 +466,7 @@ option=document.querySelectorAll('li button');
           
         });
         option[1].addEventListener('click',()=>{
+            if(currentquestion<=5){
             if(option[1].value==selectType[currentquestion].answer){
                 ++score;
             }
@@ -351,12 +476,13 @@ option=document.querySelectorAll('li button');
             currentquestion++;
             loadQuestion(currentquestion);   
                
-                      
+            }      
                     
             
           
         });
         option[2].addEventListener('click',()=>{
+            if(currentquestion<=5){
             if(option[2].value==selectType[currentquestion].answer){
                 ++score;
             }
@@ -366,12 +492,13 @@ option=document.querySelectorAll('li button');
             currentquestion++;
             loadQuestion(currentquestion);  
                
-                      
+        }        
                      
               
           
         });
         option[3].addEventListener('click',()=>{
+            if(currentquestion<=5){
             if(option[3].value==selectType[currentquestion].answer){
                 ++score;
             }
@@ -381,7 +508,7 @@ option=document.querySelectorAll('li button');
             currentquestion++;
             loadQuestion(currentquestion);   
               
-                      
+        }         
                      
              
           
@@ -390,11 +517,24 @@ option=document.querySelectorAll('li button');
           
     
         next.addEventListener('click',()=>{
-        
+        if(currentquestion<=5 || index>=4){
             userAnswers.push(null);
+            opt1.style.background="#626ee3";
+                opt2.style.background="#626ee3";
+                opt3.style.background="#626ee3";
+                opt4.style.background="#626ee3";
                window.clearTimeout(id); 
                currentquestion++;
-            loadQuestion(currentquestion);   
+            loadQuestion(currentquestion); 
+        }
+            else{
+                index++;
+                opt1.style.background="#626ee3";
+                opt2.style.background="#626ee3";
+                opt3.style.background="#626ee3";
+                opt4.style.background="#626ee3";
+            showAnswer(index);
+            }  
                
                  
            });
