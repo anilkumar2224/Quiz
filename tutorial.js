@@ -173,6 +173,8 @@ var bg=document.getElementById('bg');
 var insta=document.getElementById('insta');
 var b=document.getElementById('b');
 var butt=document.getElementById('butt');
+var clock=document.getElementById('clock');
+
 
 s.addEventListener('click',()=>{
     selectType=science;
@@ -282,6 +284,7 @@ var option;
 function loadQuestion(qindex){
     if(qindex<selectType.length){
         timer.classList.remove('hide');
+        clock.classList.remove('hide');
         timer.style.color='#000000';
         timer.innerText='Time Left 0:30';
         
@@ -317,6 +320,7 @@ function loadQuestion(qindex){
     else{
         window.clearTimeout(id);
         timer.classList.add('hide');
+        clock.classList.add('hide');
         sdis.innerText='Score :  '+score;
         card.classList.add('hide');
         start.innerText="Restart";
@@ -358,6 +362,7 @@ var index=0;
 function showAnswer(){
     if(index<selectType.length){
         timer.classList.add('hide');
+        clock.classList.add('hide');
      window.clearTimeout(id); 
      
     var q=selectType[index];
@@ -547,6 +552,7 @@ option=document.querySelectorAll('li button');
           countdown--;
           if(countdown==0){
             timer.style.color='#000000';
+            clock.style.color='#000000';
             timer.innerText='Time Left 0:30';
             window.clearTimeout(id);
             currentquestion++;
@@ -554,8 +560,10 @@ option=document.querySelectorAll('li button');
           }else{
            if(countdown<=3){
                timer.style.color='red';
+               clock.style.color='red';
            }else{
             timer.style.color='#000000';
+            clock.style.color='#000000';
            }
            if(countdown<10)
             timer.innerText='Time Left 0:0'+countdown;
