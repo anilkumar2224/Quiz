@@ -1,610 +1,765 @@
-var science=[
-    {
-        question:"An astronaut in outer space will observe sky as",
-        options:['White','Black','Blue','Red'],
-        answer:'B',
-        size:0
 
-    },
-    {
-        question:"In a study, which cells are found in COVID-19 patients 'bode well' for long term immunity ?",
-        options:['P-cell','D-cell','T-cell','Endothelial Cells'],
-        answer:'C',
-        size:1
-
-    },
-    {
-        question:"What is the first living animal on earth ?",
-        options:['Comb Jelly','Horseshoe Crab','Coelacanth','Lamprey'],
-        answer:'A',
-        size:0
-
-    },
-    {
-        question:"What is car-pooling",
-        options:['Air pollution due to car','Intensive whasing of car','Sharing a ride ','None'],
-        answer:'C',
-        size:0
-
-    },
-    {
-        question:"Which is the most abundant hydrocarbon in the atmosphere?",
-        options:['Methane','Carbonyl sulphide','Ethane','None'],
-        answer:'A',
-        size:0
-
-    }
-];
-var maths=[
-    {
-        question:"How many holes does a Straw have ?",
-        options:['0 holes','1 hole','2 holes','Infinity'],
-        answer:'B',
-        size:0
-
-    },
-    {
-        question:"If you choose an answer to this question at random, what is the chance you will be correct ?",
-        options:['25%','50%','0%','25%'],
-        answer:'C',
-        size:0
-    },
-    {
-        question:"3+5=16 4+7=30 1+1=?",
-        options:['3','0','-12','2'],
-        answer:'C',
-        size:0
-    },
-    {
-        question:"When does Fahrenheit=Celsius",
-        options:['273','-40','100','0'],
-        answer:'B',
-        size:0
-    },
-    {
-        question:"If a company has to give a holiday to all employees for the birthday of any employee, how many employees should a company hire ?",
-        options:['362','364','365','either B or C'],
-        answer:'D',
-        size:1
-    }
-
-];
-var coding=[
-    {
-        question:"Which is the first Internet search engine?",
-        options:['Google','Archie','Altavista','WAIS'],
-        answer:'B',
-        size:0
-
-    },
- 
-    {
-        question:"A complete Binary Tree contains 15 nodes, then how many edges are there in the tree ?",
-        options:['15','30','14','16'],
-        answer:'C',
-        size:1
-    },
-    {
-        question:"What is the infix version of the following postfix expression... ?  12 + z 17 y + 42 * / + ",
-        options:['x+12+z/17+y*42','x+12+z/((17+y)*42)','(x+12+z)/(17+y*42)','None'],
-        answer:'B',
-        size:1
-    },
-    {
-        question:"Which of the following sorting algorithm is NOT stable ?",
-        options:['Selection sort','Bubble sort','Merge sort','Tim sort'],
-        answer:'A',
-        size:0
-    },
-    {
-        question:"To measure Time complexity of an algorithm Big O notation is used which:",
-        options:['describes limiting behaviour of the function','characterises a function based on growth of function','upper bound on growth rate of the function','all of the mentioned'],
-        answer:'D',
-        size:2  
-    }
-
-];
-var english=[
-    {
-        question:"Our country is spiritual country, theirs.....religious",
-        options:['is','or','also','have'],
-        answer:'A',
-        size:0
-    },
-    {
-        question:"Find the correct spelt word ",
-        options:['Adventitious','Adventitous','Adventitus','Adventituous'],
-        answer:'A',
-        size:0
-    },
-    {
-        question:"His appearance is unsmiling but ......",
-        options:['his heart is full of compassion for others','he looks very serious on most occasions','people are afraid of him','he is uncompromising on matters of task performance'],
-        answer:'A',
-        size:2
-        
-    },
-    {
-        question:"It was him / who came / running / into the classroom.",
-        options:['who came','It was him','running','no ERROR'],
-        answer:'B',
-        size:0
-    },
-    {
-        question:"A hater of knowledge and learning:",
-        options:['Bibliophile','Philologist','Misogynist','Misologist'],
-        answer:'D',
-        size:0
-    }
-];
-var number=document.getElementById('number');
-var start=document.getElementById('start');
-var card=document.getElementById('q');
-var next=document.getElementById('next');
-var sdis=document.getElementById('score');
-var restart=document.getElementById('restart');
-var opt1=document.getElementById('opt1');
-var opt2=document.getElementById('opt2');
-var opt3=document.getElementById('opt3');
-var opt4=document.getElementById('opt4');
-var score=0;
-var currentquestion=0;
-var back=document.getElementById('back');
-var bk=document.getElementById('bk');
-var question=document.getElementById('question');
-var id=0;
-var myvar=0;
-var countdown=30;
-var down= document.getElementById('down')
-var btn=document.getElementById('dbtn');
-var s=document.getElementById('science');
-var c=document.getElementById('coding');
-var m=document.getElementById('maths');
-var e=document.getElementById('english');
-var selectType;
-var first=document.getElementById('select');
-var scorecard=document.getElementById('scorecard');
-var userAnswers=[];
-var startb=document.getElementById('startb');
-var btn1=document.getElementById('dbtn1');
-var timer=document.getElementById('timer');
-var firework=document.getElementById('fw');
-var bg=document.getElementById('bg');
-var insta=document.getElementById('insta');
-var b=document.getElementById('b');
-var butt=document.getElementById('butt');
-var clock=document.getElementById('clock');
-var canva=document.getElementById('canvas1');
-
-s.addEventListener('click',()=>{
-    selectType=science;
-    start.classList.remove('hide');
-    insta.classList.remove('hide');
-    first.classList.add('hide');
-    bk.classList.add('hide');
-    bk.classList.add('svg');
-    canva.classList.add('hide');
-    back.classList.remove('hide');
-    back.classList.add('stt5');
-});
-m.addEventListener('click',()=>{
-    selectType=maths;
-    start.classList.remove('hide');
-    insta.classList.remove('hide');
-    first.classList.add('hide');
-    bk.classList.add('hide');
-    canva.classList.add('hide');
-    bg.classList.add('svg');
-    back.classList.remove('hide');
-    back.classList.add('stt5');
-});
-c.addEventListener('click',()=>{
-    selectType=coding;
-    start.classList.remove('hide');
-    insta.classList.remove('hide');
-    first.classList.add('hide');
-    bk.classList.add('hide');
-    canva.classList.add('hide');
-    bg.classList.add('svg');
-    back.classList.remove('hide');
-    back.classList.add('stt5');
-});
-e.addEventListener('click',()=>{
-    selectType=english;
-    start.classList.remove('hide');
-    insta.classList.remove('hide');
-    first.classList.add('hide');
-    bk.classList.add('hide');
-    canva.classList.add('hide');
-    bg.classList.add('svg');
-    back.classList.remove('hide');
-    back.classList.add('stt5');
-});
-
-back.addEventListener('click',()=>{
-    first.classList.remove('hide')
-    start.classList.add('hide');
-    insta.classList.add('hide');
-    back.classList.add('hide');
-    score=0;
-    bg.classList.remove('firework');
-    bg.classList.add('svg');
-    scorecard.classList.add('hide');
-    currentquestion=0;
-    start.classList.add('hide');
-    sdis.classList.add('hide');
-    startb.classList.remove('stt3');
-    start.innerText="start";
-    firework.classList.add('hide');
-    startb.classList.add('stt');
-    bk.classList.remove('hide');
-    canva.classList.remove('hide');
-    butt.classList.add('hide');
-});
-
-btn.addEventListener('click',()=>{
-    
-    btn1.classList.remove('hide');
-btn.classList.add('hide')
-    down.classList.remove('hide');
-
-});
-btn1.addEventListener('click',()=>{
+/*#line{
   
-    
-    btn1.classList.add('hide');
-    btn.classList.remove('hide');
-    down.classList.add('hide');
-});
-window.onclick = function(event) {
-    if (!event.target.matches('.dbtnc')){
-        btn1.classList.add('hide');
-        btn.classList.remove('hide');
-    down.classList.add('hide');
-    }
-};
+ 
+ border-left: 6px solid black;
+   height: 200px;
+    display: block;
+}*/
+#dbtn, #dbtn1{
+  
+  color: crimson;
+  padding: 10px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+ margin: auto;
+ 
 
- var timer=document.getElementById('timer');
-start.addEventListener('click',()=>{
-    back.classList.remove('stt5');
-  back.classList.add('hide');
-  bg.classList.remove('svg');
-  userAnswers=[];
-    score=0;
-    bg.classList.remove('firework');
-    firework.classList.add('hide');
-    currentquestion=0;
-    startb.classList.remove('stt');
-    insta.classList.add('hide');
-    start.classList.add('hide');
-    card.classList.remove('hide');
-    sdis.classList.add('hide');
-    scorecard.classList.add('hide');
-    window.clearTimeout(id);
-    butt.classList.add('hide');
-    loadQuestion(currentquestion);
+}
+#down a:hover {background-color: #ddd;
 
-});
-var option;
-function loadQuestion(qindex){
-    if(qindex<selectType.length){
-        timer.classList.remove('hide');
-        clock.classList.remove('hide');
-        timer.style.color='#000000';
-        timer.innerText='Time Left 0:30';
-        
-     window.clearTimeout(id); 
-     
-    var q=selectType[qindex];
-    if(q.size==1){
-        card.style.height='450px';
-    }
-    else if(q.size==2){
-        opt1.style.height='45px';
-        opt2.style.height='45px';
-        opt3.style.height='45px';
-        opt4.style.height='45px';
-        card.style.height='450px';
-    }
-    else{
-        card.style.height='400px'; 
-        opt1.style.height='35px';
-        opt2.style.height='35px';
-        opt3.style.height='35px';
-        opt4.style.height='35px';
-    }
-    number.innerText=qindex+1+'.';
-    question.textContent=q.question;
-    opt1.textContent=q.options[0];
-    opt2.textContent=q.options[1];
-    opt3.textContent=q.options[2];
-    opt4.textContent=q.options[3];
-    start1();
-   
-   }
-    else{
-        window.clearTimeout(id);
-        timer.classList.add('hide');
-        clock.classList.add('hide');
-        sdis.innerText='Score :  '+score;
-        card.classList.add('hide');
-        start.innerText="Restart";
-        back.classList.remove('hide');
-        sdis.classList.remove('hide');
-        start.classList.remove('hide');
-        startb.classList.add('stt3');
-        scorecard.classList.remove('hide'); 
-        butt.classList.remove('hide');
-        next.innerText='SKIP';
-        if(score>=4){  
-        firework.classList.remove('hide');
-        }
-        bg.classList.add('firework');
-        currentquestion++;
-        butt.addEventListener('click',()=>{
-            back.classList.add('hide');
-            bg.classList.remove('svg');
-            bg.classList.remove('firework');
-            firework.classList.add('hide');
-            index=0;
-            startb.classList.remove('stt');
-            insta.classList.add('hide');
-            start.classList.add('hide');
-            card.classList.remove('hide');
-            sdis.classList.add('hide');
-            scorecard.classList.add('hide');
-            window.clearTimeout(id);
-            butt.classList.add('hide');
-             next.innerText='NEXT';
-           index=0;
-           showAnswer(); 
+}
+#question{
+  padding-top: 30px;
+}
+.sa{
+  position: relative;
+  display: inline-block;
 
-        });
-        return;
-    }
-};
-var index=0;
-function showAnswer(){
-    if(index<selectType.length){
-        timer.classList.add('hide');
-        clock.classList.add('hide');
-     window.clearTimeout(id); 
-     
-    var q=selectType[index];
-    if(q.size==1){
-        card.style.height='450px';
-    }
-    else if(q.size==2){
-        opt1.style.height='45px';
-        opt2.style.height='45px';
-        opt3.style.height='45px';
-        opt4.style.height='45px';
-        card.style.height='450px';
-    }
-    else{
-        card.style.height='400px'; 
-        opt1.style.height='35px';
-        opt2.style.height='35px';
-        opt3.style.height='35px';
-        opt4.style.height='35px';
-    }
-    number.innerText=index+1+'.';
-    question.textContent=q.question;
-    opt1.textContent=q.options[0];
-    opt2.textContent=q.options[1];
-    opt3.textContent=q.options[2];
-    opt4.textContent=q.options[3];
+  margin: auto;
 
-    if(q.answer=='A'){
-        opt1.style.background="green";
-        if(userAnswers[index]!='A'){
-            
-            if(userAnswers[index]=='B'){
-                opt2.style.background="red";  
-            }else if(userAnswers[index]=='C'){
-                opt3.style.background="red";
-            }
-            else if(userAnswers[index]=='D'){
-                opt4.style.background="red";
-            }
-        }
-    }
-    else if(q.answer=='B'){
-        opt2.style.background="green";
-        if(userAnswers[index]!='B'){
-            if(userAnswers[index]=='A'){
-                opt1.style.background="red";  
-            }else if(userAnswers[index]=='C'){
-                opt3.style.background="red";
-            }
-            else if(userAnswers[index]=='D'){
-                opt4.style.background="red";
-            }
-        }
-    }
-    else if(q.answer=='C'){
-        opt3.style.background="green";
-        if(userAnswers[index]!='C'){
-            if(userAnswers[index]=='A'){
-                opt1.style.background="red";  
-            }else if(userAnswers[index]=='B'){
-                opt2.style.background="red";
-            }
-            else if(userAnswers[index]=='D'){
-                opt4.style.background="red";
-            }
-        }
-    }
-    else if(q.answer=='D'){
-        opt4.style.background="green";
-        if(userAnswers[index]!='D'){
-            if(userAnswers[index]=='B'){
-                opt2.style.background="red";  
-            }else if(userAnswers[index]=='C'){
-                opt3.style.background="red";
-            }
-            else if(userAnswers[index]=='A'){
-                opt1.style.background="red";
-            }
-        }
-    }
-
-   
-   }
+top: 50%;
+position: absolute;
+left: 50%;
+transform: translate(-50%,-50%);
+z-index: 3;
+  
 }
 
 
-option=document.querySelectorAll('li button');
+#down{
+
+  position: absolute;
+  background-color: #f1f1f1;
+  
+  min-width: 180px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+ 
+}
+#down a{
+  color: black;
+  padding: 12px 16px ;
+  text-decoration: none;
+  display: block;
+
+}
+
+.hide{
+  display: none;
+}
+.bg{
+  background: linear-gradient(90deg, rgba(165, 165, 165, 0.03) 0%, rgba(165, 165, 165, 0.03) 8%, rgba(235, 235, 235, 0.03) 8%, rgba(235, 235, 235, 0.03) 9%, rgba(7, 7, 7, 0.03) 9%, rgba(7, 7, 7, 0.03) 14%, rgba(212, 212, 212, 0.03) 14%, rgba(212, 212, 212, 0.03) 17%, rgba(219, 219, 219, 0.03) 17%, rgba(219, 219, 219, 0.03) 95%, rgba(86, 86, 86, 0.03) 95%, rgba(86, 86, 86, 0.03) 100%), linear-gradient(67.5deg, rgba(80, 80, 80, 0.03) 0%, rgba(80, 80, 80, 0.03) 11%, rgba(138, 138, 138, 0.03) 11%, rgba(138, 138, 138, 0.03) 17%, rgba(122, 122, 122, 0.03) 17%, rgba(122, 122, 122, 0.03) 24%, rgba(166, 166, 166, 0.03) 24%, rgba(166, 166, 166, 0.03) 27%, rgba(245, 245, 245, 0.03) 27%, rgba(245, 245, 245, 0.03) 89%, rgba(88, 88, 88, 0.03) 89%, rgba(88, 88, 88, 0.03) 100%), linear-gradient(67.5deg, rgba(244, 244, 244, 0.03) 0%, rgba(244, 244, 244, 0.03) 4%, rgba(16, 16, 16, 0.03) 4%, rgba(16, 16, 16, 0.03) 10%, rgba(157, 157, 157, 0.03) 10%, rgba(157, 157, 157, 0.03) 20%, rgba(212, 212, 212, 0.03) 20%, rgba(212, 212, 212, 0.03) 83%, rgba(5, 5, 5, 0.03) 83%, rgba(5, 5, 5, 0.03) 84%, rgba(237, 237, 237, 0.03) 84%, rgba(237, 237, 237, 0.03) 100%), linear-gradient(90deg, #FFF, #FFF);
+  height: 94vh;
+}
+.firework{
+  background: rgb(43, 41, 41);
+}
+.show{
+  display: block;
+}
+.svg{
+  background: url('bk.svg') no-repeat center;
+  background-size: cover;
+  z-index: -1;
+}
+.inst{
+  font-size: 20px;
+  font-family: monospace;
+  background-color:#000 ;
+  color: #fff;
+  margin: auto;
+  top: 25%;
+  border-radius: 15px;
+  border-left-color: crimson;
+  border-left-width: 10px;
+  border-left-style: solid;
+position: absolute;
+left: 48%;
+transform: translate(-50%,-50%);
+z-index: 1;
+padding: 5px;
+
+}
+.inst ol{
+  padding-left: 2px;
+}
+.inst ol li{
+list-style: none;
+
+}
+.inst ol li{
+  padding: 5px;
+}
+.stt{
+  width: 100px;
+}
+.stt{
+margin: auto;
+top: 60%;
+position: absolute;
+left: 60%;
+transform: translate(-50%,-50%);
+z-index: 2;
+}
+.card{
+  margin: auto;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  }
+.card{
+  background: linear-gradient(270deg,#02203c 50%,#15314b 0);
+  color: #f1f1f1;
+  width: 300px;
+  height: 400px;
+  border-radius: 5px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.75);
+  font-size: 22px;
+  font-weight: 300;
+ 
+}
+#number{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+#question{
+  padding-top: 5px;
+  padding-left: 10px;
+}
+.card div{
+  padding: 5px;
+}
+.card  li{
+  list-style: none;
+  padding: 5px;
+  
+  
+}
+.card  li button{
+  border: none;
+  width: 100%;
+  color: #fff;
+  background-color: #626ee3;
+  cursor: pointer;
+  outline: none;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 200;
+ 
+}/*
+#next{
+  float:right;
+}*/
+.stt1{
+  margin: auto;
+  
+  top: 50%;
+  position: absolute;
+  right: -30%;
+  transform: translate(-50%,-50%);
+  }
+
+  .stt2{
+    margin: auto;
+    width: 100px;
+    top: 72%;
+    position: absolute;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+    }
+    .stt3{
+      margin: auto;
+      width: 100px;
+      top: 72%;
+      position: absolute;
+      left: 55%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+    }
+    .stt4{
+      margin: auto;
+      top: 10%;
+      position: absolute;
+      left: 49%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      font-size: 25px;
+      font-weight: 600;
+    }
+    .stt5{
+      margin: auto;
+      top: -65%;
+      position: absolute;
+      left: -50%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+    }
+    .div1{
+      margin: auto;
+      top: 10%;
+      position: absolute;
+      left: 53%;
+      transform: translate(-50%,-50%);
+      z-index: 2;
+      width: 230px;
+      height: 150px;
+    }
+/*.st{
+ 
+  background-color:#3498DB ;
+  color: #f1f1f1;
+  padding: 10px;
+  font-size: 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+.st:hover,.back:hover{
+  background-color:#f1f1f1;
+  transform: translate(1.2);
+ 
+}*/
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+      flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+ 
+ 
+/*   padding: 2em 0em; */
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+ 
+  padding:  40px 0px;
+  width: 240px;
+ 
+}
+
+
+
+
+
+
+.btn {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  max-width: 160px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+
+}
+.btn:hover {
+  text-decoration: none;
+ 
+}
+
+/*btn_background*/
+.effect01 {
+  color: #FFF;
+  border: 4px solid #000;
+  box-shadow:0px 0px 0px 1px #000 inset;
+  background-color: #000;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+}
+.effect01:hover {
+  border: 4px solid #666;
+  background-color: #FFF;
+  box-shadow:0px 0px 0px 4px #EEE inset;
+   color:black;
+}
+
+/*btn_text*/
+
+
+/*highlight*/
+.effect01:after {
+  background: #FFF;
+  border: 0px solid #000;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .8;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+          transform: rotate(35deg);
+  width: 50px;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);/*easeOutCirc*/
+  z-index: 1;
+}
+.effect01:hover:after {
+  background: #FFF;
+  border: 20px solid #000;
+  opacity: 0;
+  left: 120%;
+  -webkit-transform: rotate(40deg);
+          transform: rotate(40deg);
+}
+#next {
+  width: 140px;
+  height:40px;
+  border-radius:180px;
+  position: relative;
+  left:calc(50% - 1px);
+  top:calc(50% - 85px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  cursor:pointer;
+  line-height:12px;
+  outline: none;
+}
+
+#next:before {
+  content:'';
+  z-index:1;
+  position:absolute;
+  display:block;
+  width:80%;
+  height:70%;
+  top:15%;
+  left:10%;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(15px);
+  opacity:0;
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+}
+
+#next:hover:before {
+  opacity:1;
+  transition: 0.3s opacity ease-in-out;
+  filter:blur(25px);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);  
+  
+}
+
+#next:after {
+  content:'';
+  text-align:center;
+  line-height:30px;
+  font-size:18px;
+  color:rgba(235,235,235,1);
+  font-weight:bold;
+  z-index:5;
+  position:absolute;
+  display:block;
+  border-radius:180px;
+  width:92%;
+  height:80%;
+  top:10%;
+  left:4%;  
+
+}
+div.business-card {
+  height: 420px;
+  width: 320px;
+  margin-left: -160px;
+  margin-top: -210px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+}
+
+div.flipper {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  position: relative;
+  -webkit-transform-origin: center 160px;
+          transform-origin: center 160px;
+}
+
+div.front {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 420px;
+  width: 320px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.78);
+}
+
+div.front {
+  background-color: white;
+  z-index: 0;
+}
+div.front:before, div.front:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 160px;
+  border-style: solid;
+  border-color: transparent;
+}
+div.front:before {
+  border-top-color: #288FBD;
+  border-left-color: #288FBD;
+  z-index: 2;
+}
+div.front:after {
+  border-top-color: #005D8C;
+  border-right-color: #005D8C;
+}
+div.front div.name {
+  position: absolute;
+  bottom: 105px;
+  left: 83px;
+}
+div.front div.name span {
+  display: block;
+  font-size: 40px;
+  line-height: 45px;
+}
+div.front div.name span.first {
+  color: #005D8C;
+}
+div.front div.name span.last {
+  color: #288FBD;
+}
+div.front div.name span.title {
+  font-size: 20px;
+  line-height: 20px;
+}
+ @media(max-width:1350px){
+   
+  .stt2{
+ 
+    left: 41%;
+    top:78%;
+    }
+    .stt3{
     
+      left: 59%;
+      top:78%;
+    }
+    .inst{
+      top: 30%;
+      border-top-width:10px ;
+      border-left-width:0px ;
+      border-top-color: crimson;
+      border-top-style: solid;
+    }
+    .stt{
+      top: 70%;
+    }
+ }
+ @media(max-width:880px){
+  .inst{
+    top: 40%;
+    border-top-width:10px ;
+    border-left-width:0px ;
+    border-top-color: crimson;
+    border-top-style: solid;
+  }
+  .stt{
+    top: 80%;
+  }
+  .stt5{
+   
+    top: 65%;
+ 
+    left: 30%;
     
-        option[0].addEventListener('click',()=>{
-            if(currentquestion<=5 ){
-            if(option[0].value==selectType[currentquestion].answer){
-                ++score;
-            }
-            userAnswers.push(option[0].value);
-            
-           
-                currentquestion++;
-                loadQuestion(currentquestion);  
-          
-        }
-            
-                     
-                     
-              
-          
-        });
-        option[1].addEventListener('click',()=>{
-            if(currentquestion<=5){
-            if(option[1].value==selectType[currentquestion].answer){
-                ++score;
-            }
-            userAnswers.push(option[1].value);
-          
-        
-            currentquestion++;
-            loadQuestion(currentquestion);   
-               
-            }      
-                    
-            
-          
-        });
-        option[2].addEventListener('click',()=>{
-            if(currentquestion<=5){
-            if(option[2].value==selectType[currentquestion].answer){
-                ++score;
-            }
-            userAnswers.push(option[2].value);
-           
-          
-            currentquestion++;
-            loadQuestion(currentquestion);  
-               
-        }        
-                     
-              
-          
-        });
-        option[3].addEventListener('click',()=>{
-            if(currentquestion<=5){
-            if(option[3].value==selectType[currentquestion].answer){
-                ++score;
-            }
-            userAnswers.push(option[3].value);
-           
-         
-            currentquestion++;
-            loadQuestion(currentquestion);   
-              
-        }         
-                     
-             
-          
-        });
+  }
+ }
+ @media(max-width:633px){
+  .inst{
+    top: 40%;
+    border-top-width:10px ;
+    border-left-width:0px ;
+    border-top-color: crimson;
+    border-top-style: solid;
+    font-size: 15px;
+    width: 300px;
+    left: 50%;
+  }
+  .stt{
+    top: 80%;
+  } 
+  .inst ol{
+    padding-left: 2px;
+  }
+  .inst ol li{
+  list-style: none;
+
+  }
+ }
+ @media(max-width:602px){
+   
+  .stt2{
+ 
+    left: 32%;
+    top:78%;
+    }
+    .stt3{
+    
+      left: 69%;
+      top:78%;
+    }
+    .stt{
+      left:65%;
+    }
+    .stt5{
+
+      left: 70%;
+      
+    }
+ }
+ @media(max-width:400px){
+   .div1{
+     left: 63%;
+    
+   }
+  .stt2{
+ 
+    left: 25%;
+    top:75%;
+   
+    }
+    .stt3{
+      top:75%;
+      left: 75%;
+      
+    }
+    .stt4{
+      left: 47%;
+    }
+    .stt{
+      left:70%;
      
-          
+    }
+    .stt5{
+      top:89.5%;
+      left: 70%;
+      
+    }
+
+
+
+
+
+
+
+#start::after ,#back::after{
+  animation: ring 1.5s infinite;
+}
+
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
     
-        next.addEventListener('click',()=>{
-        if(currentquestion<=5 || index>=4){
-            userAnswers.push(null);
-            opt1.style.background="#626ee3";
-                opt2.style.background="#626ee3";
-                opt3.style.background="#626ee3";
-                opt4.style.background="#626ee3";
-               window.clearTimeout(id); 
-               currentquestion++;
-            loadQuestion(currentquestion); 
-        }
-            else{
-                index++;
-                opt1.style.background="#626ee3";
-                opt2.style.background="#626ee3";
-                opt3.style.background="#626ee3";
-                opt4.style.background="#626ee3";
-            showAnswer(index);
-            }  
-               
-                 
-           });
-          
-           function start1(){
-            countdown=30;
-       id= window.setInterval(()=>{
-        
-         
-          countdown--;
-          if(countdown==0){
-            timer.style.color='#000000';
-            clock.style.color='#000000';
-            timer.innerText='Time Left 0:30';
-            window.clearTimeout(id);
-            currentquestion++;
-            loadQuestion(currentquestion);  
-          }else{
-           if(countdown<=3){
-               timer.style.color='red';
-               clock.style.color='red';
-           }else{
-            timer.style.color='#000000';
-            clock.style.color='#000000';
-           }
-           if(countdown<10)
-            timer.innerText='Time Left 0:0'+countdown;
-            else
-            timer.innerText='Time Left 0:'+countdown;
-             
-          }
-         
-           },1000);
-        };
-    
-        function draw() {
-            var ctx =document.getElementById('canvas1').getContext('2d');
-          if (canvas1.getContext) {
-          
-            
-            ctx.beginPath();
-           
-            ctx.moveTo(75, 50);
-             ctx.lineTo(25, 75);
-             ctx.lineTo(75,100);
-             ctx.lineTo(42,75);
-           
-            ctx.fill();
-          
-            
-            ctx.beginPath();
-            ctx.moveTo(85, 50);
-             ctx.lineTo(135, 75);
-             ctx.lineTo(85,100);
-             ctx.lineTo(118,75);
-            ctx.closePath();
-            ctx.strokeStyle = 'rgb(0, ' + Math.floor(255 - 42.5 * 0) + ', ' + 
-                                 Math.floor(255 - 42.5 * 0) + ')';
-            ctx.stroke();
-           
-          
-          }
-          }
+ }
+ .bg1 {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:5vmin;
+  position:fixed;
+  text-align:center;
+  top:30%;
+  transform:translate(-50%, -50%);
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+
+
+.z-10086 {
+  z-index: 10086;
+}
+
+.-top-6 {
+  top: -6rem;
+}
+
+.emitter {
+  position: relative;
+}
+.emitter div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--particle-color);
+}
+
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: auto;
+  top: 90%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  
+}
+
+.button {
+  min-width: 200px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+ #butt::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(200px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+#butt:hover, #butt:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+#butt:hover::before, #butt:focus::before {
+  opacity: 1;
+}
+
+#butt::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+#butt:hover::after, #butt:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
