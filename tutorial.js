@@ -174,7 +174,7 @@ var insta=document.getElementById('insta');
 var b=document.getElementById('b');
 var butt=document.getElementById('butt');
 var clock=document.getElementById('clock');
-
+var canva=document.getElementById('canvas1');
 
 s.addEventListener('click',()=>{
     selectType=science;
@@ -183,6 +183,7 @@ s.addEventListener('click',()=>{
     first.classList.add('hide');
     bk.classList.add('hide');
     bk.classList.add('svg');
+    canva.classList.add('hide');
     back.classList.remove('hide');
     back.classList.add('stt5');
 });
@@ -192,6 +193,7 @@ m.addEventListener('click',()=>{
     insta.classList.remove('hide');
     first.classList.add('hide');
     bk.classList.add('hide');
+    canva.classList.add('hide');
     bg.classList.add('svg');
     back.classList.remove('hide');
     back.classList.add('stt5');
@@ -202,6 +204,7 @@ c.addEventListener('click',()=>{
     insta.classList.remove('hide');
     first.classList.add('hide');
     bk.classList.add('hide');
+    canva.classList.add('hide');
     bg.classList.add('svg');
     back.classList.remove('hide');
     back.classList.add('stt5');
@@ -212,6 +215,7 @@ e.addEventListener('click',()=>{
     insta.classList.remove('hide');
     first.classList.add('hide');
     bk.classList.add('hide');
+    canva.classList.add('hide');
     bg.classList.add('svg');
     back.classList.remove('hide');
     back.classList.add('stt5');
@@ -234,6 +238,7 @@ back.addEventListener('click',()=>{
     firework.classList.add('hide');
     startb.classList.add('stt');
     bk.classList.remove('hide');
+    canva.classList.remove('hide');
     butt.classList.add('hide');
 });
 
@@ -575,3 +580,31 @@ option=document.querySelectorAll('li button');
            },1000);
         };
     
+        function draw() {
+            var ctx =document.getElementById('canvas1').getContext('2d');
+          if (canvas1.getContext) {
+          
+            
+            ctx.beginPath();
+           
+            ctx.moveTo(75, 50);
+             ctx.lineTo(25, 75);
+             ctx.lineTo(75,100);
+             ctx.lineTo(42,75);
+           
+            ctx.fill();
+          
+            
+            ctx.beginPath();
+            ctx.moveTo(85, 50);
+             ctx.lineTo(135, 75);
+             ctx.lineTo(85,100);
+             ctx.lineTo(118,75);
+            ctx.closePath();
+            ctx.strokeStyle = 'rgb(0, ' + Math.floor(255 - 42.5 * 0) + ', ' + 
+                                 Math.floor(255 - 42.5 * 0) + ')';
+            ctx.stroke();
+           
+          
+          }
+          }
