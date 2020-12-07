@@ -608,3 +608,4 @@ option=document.querySelectorAll('li button');
           
           }
           }
+draw();
