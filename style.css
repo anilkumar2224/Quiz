@@ -6,6 +6,9 @@
    height: 200px;
     display: block;
 }*/
+*{
+   -webkit-tap-highlight-color: transparent !important;
+}
 #dbtn, #dbtn1{
   
   color: crimson;
